@@ -105,6 +105,10 @@ const TESTIMONIALS = [
   { name: "Priya M.", role: "Fitness Influencer", text: "Saved me hours of editing. The gym reels are high quality and trending.", rating: 5 },
   { name: "Siddharth K.", role: "Digital Marketer", text: "Simple, easy to use, and excellent delivery. Instant access as promised.", rating: 4 },
   { name: "Anjali P.", role: "Theme Page Owner", text: "Finally found a luxury bundle that doesn't look pixelated. Highly recommended!", rating: 5 },
+  { name: "Vikram R.", role: "YouTube Personal Brand", text: "The AI Storytelling reels alone are worth 10x the price. My retention rate jumped from 30% to 65%.", rating: 5 },
+  { name: "Neha G.", role: "E-commerce Owner", text: "Used these for my brand's TikTok and Instagram. Viral reach is real—one reel got 1.2M views in 48 hours!", rating: 5 },
+  { name: "Arjun V.", role: "Motivational Speaker", text: "The editing style of these bundles matches exactly what's trending right now. No more guesswork.", rating: 4 },
+  { name: "Sneha L.", role: "Travel Blogger", text: "The satisfying and 4K luxury reels are perfect for my aesthetics. Best bundle in the market for sure.", rating: 5 },
 ];
 
 const FAQs = [
@@ -165,12 +169,12 @@ const AnimatedCounter = ({ end, duration = 2 }: { end: number, duration?: number
 };
 
 const SectionHeading = ({ children, subtitle }: { children: React.ReactNode, subtitle?: string }) => (
-  <div className="text-center mb-16 px-4">
+  <div className="text-center mb-10 md:mb-16 px-4">
     <motion.h2 
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="text-3xl md:text-5xl font-black mb-4 leading-tight"
+      className="text-2xl sm:text-3xl md:text-5xl font-black mb-4 leading-tight"
     >
       {children}
     </motion.h2>
@@ -180,12 +184,12 @@ const SectionHeading = ({ children, subtitle }: { children: React.ReactNode, sub
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ delay: 0.2 }}
-        className="text-gray-400 max-w-2xl mx-auto text-lg leading-relaxed"
+        className="text-gray-400 max-w-2xl mx-auto text-sm md:text-lg leading-relaxed"
       >
         {subtitle}
       </motion.p>
     )}
-    <div className="w-24 h-1.5 vibrant-gradient mx-auto mt-6 rounded-full" />
+    <div className="w-16 md:w-24 h-1 md:h-1.5 vibrant-gradient mx-auto mt-6 rounded-full" />
   </div>
 );
 
@@ -254,7 +258,7 @@ export default function App() {
             <Zap className="text-white w-5 h-5 fill-white" />
           </div>
           <span className="text-xl md:text-2xl font-black tracking-tighter text-white">
-            WEBIFY<span className="text-primary">BOOST</span>
+            Webify<span className="text-primary">Boost</span>
           </span>
         </div>
         
@@ -278,18 +282,26 @@ export default function App() {
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div 
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="fixed inset-0 z-40 bg-bg-dark pt-24 px-8 md:hidden"
+            initial={{ opacity: 0, x: '100%' }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: '100%' }}
+            className="fixed inset-0 z-[100] bg-bg-dark flex flex-col p-8 sm:p-12 md:hidden"
           >
-            <div className="flex flex-col gap-8 text-2xl font-bold text-center">
-              <a href="#proof" onClick={() => setIsMenuOpen(false)}>Real Proof</a>
-              <a href="#what-you-get" onClick={() => setIsMenuOpen(false)}>The Bundle</a>
-              <a href="#reviews" onClick={() => setIsMenuOpen(false)}>Creator Stories</a>
-              <a href="#bonuses" onClick={() => setIsMenuOpen(false)}>Free Bonuses</a>
-              <a href={`mailto:${EMAIL}`} onClick={() => setIsMenuOpen(false)}>Support</a>
-              <a href={PAYMENT_LINK} className="text-primary">Unlock Now</a>
+            <div className="flex justify-between items-center mb-16">
+               <div className="flex items-center gap-2">
+                <Zap className="text-primary w-6 h-6 fill-primary" />
+                <span className="text-xl font-black tracking-tighter text-white">Webify<span className="text-primary">Boost</span></span>
+              </div>
+              <button onClick={() => setIsMenuOpen(false)} className="p-2 rounded-xl bg-white/5"><X className="text-white" /></button>
+            </div>
+
+            <div className="flex flex-col gap-8 text-2xl font-black">
+              <a href="#proof" onClick={() => setIsMenuOpen(false)} className="hover:text-primary transition-colors">Success Proof</a>
+              <a href="#what-you-get" onClick={() => setIsMenuOpen(false)} className="hover:text-primary transition-colors">The Bundle</a>
+              <a href="#reviews" onClick={() => setIsMenuOpen(false)} className="hover:text-primary transition-colors">Success Stories</a>
+              <a href="#bonuses" onClick={() => setIsMenuOpen(false)} className="hover:text-primary transition-colors">Free Bonuses</a>
+              <a href={`mailto:${EMAIL}`} onClick={() => setIsMenuOpen(false)} className="hover:text-primary transition-colors">Help Support</a>
+              <a href={PAYMENT_LINK} className="premium-gradient text-white px-8 py-5 rounded-2xl text-center text-xl shadow-2xl">Unlock Bundle Now</a>
             </div>
           </motion.div>
         )}
@@ -313,16 +325,16 @@ export default function App() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-4xl md:text-7xl font-black mb-6 leading-[1.1] tracking-tight max-w-5xl mx-auto"
+            className="text-[2.25rem] leading-[1.1] sm:text-5xl md:text-7xl font-black mb-6 tracking-tight max-w-5xl mx-auto px-2"
           >
-            <span className="premium-gradient-text">2.5 Lakh+</span> Viral Reels Bundle <br /> for Content Creators
+            <span className="premium-gradient-text">2.5 Lakh+</span> Viral Reels Bundle <br className="hidden sm:block" /> for Content Creators
           </motion.h1>
 
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-gray-400 text-lg md:text-xl max-w-3xl mx-auto mb-12"
+            className="text-gray-400 text-base md:text-xl max-w-3xl mx-auto mb-10 px-4"
           >
             High-quality ready-to-use reels across trending niches to help creators publish consistently and grow their presence fast.
           </motion.p>
@@ -331,21 +343,21 @@ export default function App() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className="flex flex-col items-center gap-8"
+            className="flex flex-col items-center gap-6 px-4"
           >
-            <div className="flex flex-col md:flex-row gap-4 w-full justify-center">
+            <div className="flex flex-col md:flex-row gap-4 w-full justify-center max-w-lg md:max-w-none">
               <a 
                 href={PAYMENT_LINK}
-                className="group inline-flex items-center justify-center gap-2 premium-gradient text-white text-lg md:text-xl font-bold px-10 py-5 rounded-2xl transition-all hover:scale-[1.02] active:scale-[0.98] cta-shadow whitespace-nowrap"
+                className="group inline-flex items-center justify-center gap-2 premium-gradient text-white text-lg md:text-xl font-bold px-8 py-5 rounded-2xl transition-all hover:scale-[1.02] active:scale-[0.98] cta-shadow"
               >
                 Get Instant Access
                 <ArrowRight className="group-hover:translate-x-1 transition-transform" />
               </a>
               <a 
                 href={PAYMENT_LINK}
-                className="inline-flex items-center justify-center gap-2 bg-white/5 border border-white/10 hover:bg-white/10 text-white text-lg md:text-xl font-bold px-10 py-5 rounded-2xl transition-all whitespace-nowrap"
+                className="inline-flex items-center justify-center gap-2 bg-white/5 border border-white/10 hover:bg-white/10 text-white text-base md:text-xl font-bold px-8 py-5 rounded-2xl transition-all"
               >
-                Secure Payment via Razorpay
+                Secure Payment
               </a>
             </div>
 
@@ -367,26 +379,26 @@ export default function App() {
       </section>
 
       {/* Trust Stats Bar */}
-      <section className="py-12 bg-bg-card border-y border-white/5">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-16">
+      <section className="py-8 md:py-12 bg-bg-card border-y border-white/5">
+        <div className="max-w-7xl mx-auto px-4 md:px-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-16">
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-black text-white mb-1">
+              <div className="text-2xl md:text-4xl font-black text-white mb-1">
                 <AnimatedCounter end={85000} />+
               </div>
-              <div className="text-gray-500 text-xs font-black uppercase tracking-[0.2em]">Active Students</div>
+              <div className="text-gray-500 text-[10px] font-black uppercase tracking-[0.2em]">Students</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-black text-white mb-1">
+              <div className="text-2xl md:text-4xl font-black text-white mb-1">
                 <AnimatedCounter end={700} />+
               </div>
-              <div className="text-gray-500 text-xs font-black uppercase tracking-[0.2em]">Creators Helped</div>
+              <div className="text-gray-500 text-[10px] font-black uppercase tracking-[0.2em]">Creators</div>
             </div>
-            <div className="text-center">
-              <div className="text-3xl md:text-4xl font-black text-white mb-1">
+            <div className="text-center col-span-2 md:col-span-1 border-t border-white/5 md:border-0 pt-6 md:pt-0">
+              <div className="text-2xl md:text-4xl font-black text-white mb-1">
                 2.5L+
               </div>
-              <div className="text-gray-500 text-xs font-black uppercase tracking-[0.2em]">Viral Reels Bundle</div>
+              <div className="text-gray-500 text-[10px] font-black uppercase tracking-[0.2em]">Reels Bundle</div>
             </div>
           </div>
         </div>
@@ -538,26 +550,26 @@ export default function App() {
       </section>
 
       {/* About Creator */}
-      <section id="creator" className="py-24 md:py-32 px-6">
-        <div className="max-w-6xl mx-auto glass-card rounded-[3.5rem] p-8 md:p-20 relative overflow-hidden">
+      <section id="creator" className="py-20 md:py-32 px-4 md:px-6">
+        <div className="max-w-6xl mx-auto glass-card rounded-[2.5rem] md:rounded-[3.5rem] p-6 sm:p-8 md:p-20 relative overflow-hidden">
           <div className="absolute -top-12 -right-12 w-64 h-64 bg-primary/20 blur-[120px]" />
-          <div className="flex flex-col md:flex-row items-center gap-16">
+          <div className="flex flex-col md:flex-row items-center gap-10 md:gap-16">
             <div className="w-full md:w-1/3">
-              <div className="aspect-square rounded-[3rem] bg-gradient-to-br from-primary via-secondary to-accent p-1.5 shadow-2xl relative group">
-                <div className="w-full h-full bg-bg-card rounded-[2.8rem] flex flex-col items-center justify-center p-8 text-center">
-                  <Users className="w-16 h-16 text-primary mb-6" />
-                  <p className="text-white font-black text-2xl">Suraj Pratap Singh</p>
-                  <p className="text-primary text-sm font-bold uppercase tracking-widest mt-2">Master Curator</p>
+              <div className="aspect-square rounded-[2.5rem] md:rounded-[3rem] bg-gradient-to-br from-primary via-secondary to-accent p-1 shadow-2xl relative group">
+                <div className="w-full h-full bg-bg-card rounded-[2.3rem] md:rounded-[2.8rem] flex flex-col items-center justify-center p-6 md:p-8 text-center">
+                  <Users className="w-12 h-12 md:w-16 md:h-16 text-primary mb-4 md:mb-6" />
+                  <p className="text-white font-black text-xl md:text-2xl tracking-tight">Suraj Pratap Singh</p>
+                  <p className="text-primary text-[10px] md:text-sm font-bold uppercase tracking-widest mt-2">Meet Your Mentor</p>
                 </div>
               </div>
             </div>
             <div className="w-full md:w-2/3 text-center md:text-left">
-              <span className="inline-block px-4 py-1 rounded-full bg-primary/10 text-primary text-xs font-black uppercase tracking-widest mb-6">Expertise & Experience</span>
-              <h2 className="text-4xl md:text-6xl font-black mb-8 leading-tight">Driven by <span className="premium-gradient-text">Proven Results</span></h2>
-              <p className="text-gray-400 text-lg md:text-xl leading-relaxed mb-10">
+              <span className="inline-block px-4 py-1 rounded-full bg-primary/10 text-primary text-[10px] md:text-xs font-black uppercase tracking-widest mb-4 md:mb-6">Expertise & Experience</span>
+              <h2 className="text-3xl md:text-6xl font-black mb-6 md:mb-8 leading-tight">Driven by <span className="premium-gradient-text">Proven Results</span></h2>
+              <p className="text-gray-400 text-base md:text-xl leading-relaxed mb-8 md:mb-10">
                 With <span className="text-white font-black underline decoration-primary decoration-4 underline-offset-4">7+ years of expertise</span> in viral marketing and audience growth, Suraj Pratap Singh has architected growth for over <span className="text-white font-black">700+ channels</span> and mentored <span className="text-white font-black">85,000+ students</span> globally.
               </p>
-              <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
+              <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
                 {[
                   { label: "Exp.", val: "7+ Yrs" },
                   { label: "Clients", val: "700+" },
@@ -668,29 +680,31 @@ export default function App() {
       </section>
 
       {/* Final CTA */}
-      <section className="pb-32 px-6">
-        <div className="max-w-5xl mx-auto relative group overflow-hidden rounded-[3rem] p-12 md:p-24 text-center">
-          <div className="absolute inset-0 premium-gradient transition-transform duration-700 group-hover:scale-105 -z-10" />
+      <section className="pb-32 px-4 md:px-6">
+        <div className="max-w-5xl mx-auto relative group overflow-hidden rounded-[2.5rem] md:rounded-[3.5rem] p-8 md:p-24 text-center">
+          <div className="absolute inset-0 premium-gradient transition-transform duration-700 group-hover:scale-105 -z-10 opacity-90" />
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="relative z-10"
           >
-            <h2 className="text-4xl md:text-6xl font-black text-white mb-6">Start Creating <br className="hidden md:block" /> Better Content Today</h2>
-            <p className="text-white/80 text-xl font-medium mb-12 max-w-2xl mx-auto italic">
+            <h2 className="text-3xl md:text-6xl font-black text-white mb-6 leading-tight">Start Creating <br className="hidden md:block" /> Better Content Today</h2>
+            <p className="text-white/80 text-base md:text-xl font-medium mb-10 max-w-2xl mx-auto italic">
               "The secret to getting ahead is getting started." Unlock 2.5 Lakh+ opportunities now.
             </p>
-            <a 
-              href={PAYMENT_LINK}
-              className="inline-flex items-center gap-3 bg-white text-primary text-xl md:text-2xl font-black px-12 py-6 rounded-2xl transition-all hover:scale-[1.05] active:scale-[0.98] shadow-2xl"
-            >
-              Unlock Instant Access
-              <ArrowRight className="w-6 h-6" />
-            </a>
-            <div className="mt-8 flex justify-center items-center gap-4 text-white/60 text-xs font-bold uppercase tracking-widest">
+            <div className="flex justify-center">
+              <a 
+                href={PAYMENT_LINK}
+                className="inline-flex items-center gap-3 bg-white text-primary text-lg md:text-2xl font-black px-8 py-5 md:px-12 md:py-6 rounded-2xl transition-all hover:scale-[1.05] active:scale-[0.98] shadow-2xl"
+              >
+                Unlock Access Now
+                <ArrowRight className="w-5 h-5 md:w-6 md:h-6" />
+              </a>
+            </div>
+            <div className="mt-8 flex flex-col sm:flex-row justify-center items-center gap-4 text-white/70 text-[10px] font-black uppercase tracking-widest">
               <span>Razorpay Secured</span>
-              <div className="w-1 h-1 bg-white/40 rounded-full" />
+              <div className="hidden sm:block w-1.5 h-1.5 bg-white/30 rounded-full" />
               <span>Full Bundle Included</span>
             </div>
           </motion.div>
@@ -699,50 +713,82 @@ export default function App() {
 
       {/* Footer */}
       <footer className="py-24 px-6 border-t border-white/5 bg-bg-card/50 relative overflow-hidden">
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-accent/10 blur-[150px] -z-10" />
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[80%] h-64 bg-primary/10 blur-[120px] -z-10 rounded-full" />
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-start gap-12 mb-20">
-            <div className="max-w-sm">
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-12 lg:gap-8 mb-20">
+            <div className="col-span-1 lg:col-span-1">
               <div className="flex items-center gap-2 mb-8">
-                <Zap className="text-primary w-8 h-8 fill-primary" />
+                <div className="bg-primary p-2 rounded-xl">
+                  <Zap className="text-white w-6 h-6 fill-white" />
+                </div>
                 <span className="text-2xl font-black tracking-tighter text-white">
-                  WEBIFY<span className="text-primary">BOOST</span>
+                  Webify<span className="text-primary">Boost</span>
                 </span>
               </div>
-              <p className="text-gray-400 text-lg leading-relaxed mb-8">Empowering 85,000+ creators with high-octane digital assets to dominate social media.</p>
+              <p className="text-gray-400 text-lg leading-relaxed mb-8">
+                The world's largest collection of premium viral reels. Join 85,000+ creators scaling their digital presence.
+              </p>
               <div className="flex gap-4">
-                <a href={WHATSAPP_LINK} className="w-12 h-12 rounded-xl glass-card flex items-center justify-center hover:bg-white/10 transition-colors"><MessageCircle className="w-6 h-6" /></a>
-                <a href={`mailto:${EMAIL}`} className="w-12 h-12 rounded-xl glass-card flex items-center justify-center hover:bg-white/10 transition-colors"><Mail className="w-6 h-6" /></a>
+                <a href={WHATSAPP_LINK} className="w-12 h-12 rounded-2xl glass-card flex items-center justify-center hover:bg-primary/20 hover:text-primary transition-all duration-300">
+                  <MessageCircle className="w-6 h-6" />
+                </a>
+                <a href={`mailto:${EMAIL}`} className="w-12 h-12 rounded-2xl glass-card flex items-center justify-center hover:bg-primary/20 hover:text-primary transition-all duration-300">
+                  <Mail className="w-6 h-6" />
+                </a>
+                <a href={`tel:${PHONE}`} className="w-12 h-12 rounded-2xl glass-card flex items-center justify-center hover:bg-primary/20 hover:text-primary transition-all duration-300">
+                  <Phone className="w-6 h-6" />
+                </a>
               </div>
             </div>
             
-            <div className="grid grid-cols-2 md:grid-cols-2 gap-12 md:gap-24">
-              <div>
-                <h4 className="text-white font-black uppercase tracking-widest text-xs mb-6">Quick Links</h4>
-                <ul className="space-y-4 text-gray-500 font-bold uppercase tracking-widest text-[10px]">
-                  <li><a href="#proof" className="hover:text-primary transition-colors">Success Proof</a></li>
-                  <li><a href="#what-you-get" className="hover:text-primary transition-colors">Bundle Specs</a></li>
-                  <li><a href="#faq" className="hover:text-primary transition-colors">Help Center</a></li>
-                  <li><button onClick={() => setLegalModal(LEGAL_CONTENT.about)} className="hover:text-primary transition-colors text-left uppercase">About Us</button></li>
-                </ul>
-              </div>
-              <div>
-                <h4 className="text-white font-black uppercase tracking-widest text-xs mb-6">Legal & Support</h4>
-                <ul className="space-y-4 text-gray-500 font-bold uppercase tracking-widest text-[10px]">
-                  <li><button onClick={() => setLegalModal(LEGAL_CONTENT.privacy)} className="hover:text-primary transition-colors text-left uppercase">Privacy Policy</button></li>
-                  <li><button onClick={() => setLegalModal(LEGAL_CONTENT.disclaimer)} className="hover:text-primary transition-colors text-left uppercase">Legal Disclaimer</button></li>
-                  <li><button onClick={() => setLegalModal(LEGAL_CONTENT.refund)} className="hover:text-primary transition-colors text-left uppercase">Refund Policy</button></li>
-                  <li><a href={WHATSAPP_LINK} className="text-primary font-black">Contact Support</a></li>
-                </ul>
+            <div className="col-span-1">
+              <h4 className="text-white font-black uppercase tracking-widest text-xs mb-8 flex items-center gap-2">
+                <div className="w-1 h-4 bg-primary rounded-full" /> Navigation
+              </h4>
+              <ul className="space-y-4 text-gray-500 font-bold uppercase tracking-widest text-[10px]">
+                <li><a href="#proof" className="hover:text-primary transition-colors flex items-center gap-2">Success Proof</a></li>
+                <li><a href="#what-you-get" className="hover:text-primary transition-colors flex items-center gap-2">The Bundle</a></li>
+                <li><a href="#reviews" className="hover:text-primary transition-colors flex items-center gap-2">Creator Reviews</a></li>
+                <li><a href="#bonuses" className="hover:text-primary transition-colors flex items-center gap-2">Free Bonuses</a></li>
+              </ul>
+            </div>
+
+            <div className="col-span-1">
+              <h4 className="text-white font-black uppercase tracking-widest text-xs mb-8 flex items-center gap-2">
+                <div className="w-1 h-4 bg-secondary rounded-full" /> Legal & Policy
+              </h4>
+              <ul className="space-y-4 text-gray-500 font-bold uppercase tracking-widest text-[10px]">
+                <li><button onClick={() => setLegalModal(LEGAL_CONTENT.privacy)} className="hover:text-primary transition-colors text-left uppercase">Privacy Policy</button></li>
+                <li><button onClick={() => setLegalModal(LEGAL_CONTENT.disclaimer)} className="hover:text-primary transition-colors text-left uppercase">Disclaimer</button></li>
+                <li><button onClick={() => setLegalModal(LEGAL_CONTENT.refund)} className="hover:text-primary transition-colors text-left uppercase">Refund Policy</button></li>
+                <li><button onClick={() => setLegalModal(LEGAL_CONTENT.about)} className="hover:text-primary transition-colors text-left uppercase text-secondary">About Us</button></li>
+              </ul>
+            </div>
+
+            <div className="col-span-1">
+              <h4 className="text-white font-black uppercase tracking-widest text-xs mb-8 flex items-center gap-2">
+                <div className="w-1 h-4 bg-accent rounded-full" /> Support
+              </h4>
+              <div className="glass-card p-6 rounded-3xl border-primary/10">
+                <p className="text-xs text-gray-400 font-medium mb-4 italic">"I usually reply in less than 2 hours on WhatsApp."</p>
+                <a href={WHATSAPP_LINK} className="flex items-center justify-center gap-2 w-full premium-gradient text-white font-black py-4 rounded-2xl text-xs uppercase tracking-widest hover:scale-[1.02] transition-transform">
+                  <MessageCircle className="w-4 h-4 fill-white" /> Chat Now
+                </a>
               </div>
             </div>
           </div>
           
           <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-gray-500 text-[10px] font-black uppercase tracking-[0.3em]">
-            <span>© {new Date().getFullYear()} {BRAND_NAME}. ALL RIGHTS RESERVED.</span>
-            <div className="flex items-center gap-2">
-              <ShieldCheck className="w-4 h-4" />
-              SECURED BY RAZORPAY & STRIPE
+            <span>© {new Date().getFullYear()} {BRAND_NAME}. HANDCRAFTED FOR CREATORS.</span>
+            <div className="flex items-center gap-4">
+              <div className="flex items-center gap-1.5 px-3 py-1 bg-white/5 rounded-full border border-white/10">
+                <ShieldCheck className="w-3 h-3 text-green-500" />
+                <span>RZP SECURED</span>
+              </div>
+              <div className="flex items-center gap-1.5 px-3 py-1 bg-white/5 rounded-full border border-white/10">
+                <Star className="w-3 h-3 text-yellow-500 fill-yellow-500" />
+                <span>4.9/5 RATING</span>
+              </div>
             </div>
           </div>
         </div>

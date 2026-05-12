@@ -2,9 +2,9 @@
 
 @theme {
   --color-primary: #3b82f6;
-  --color-secondary: #8b5cf6;
+  --color-secondary: #a855f7;
   --color-accent: #f43f5e;
-  --color-bg-dark: #05070a;
+  --color-bg-dark: #020617;
   --color-bg-card: #0f172a;
   --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
 }
@@ -18,29 +18,29 @@
 
 @layer components {
   .vibrant-gradient {
-    @apply bg-gradient-to-br from-primary via-secondary to-accent;
+    @apply bg-gradient-to-br from-[#3b82f6] via-[#8b5cf6] to-[#ec4899];
   }
 
   .premium-gradient-text {
-    @apply bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-blue-400 via-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent;
   }
 
   .glass-card {
-    @apply bg-white/[0.02] backdrop-blur-2xl border border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.8)];
+    @apply bg-white/[0.03] backdrop-blur-2xl border border-white/10 shadow-[0_20px_50px_-15px_rgba(0,0,0,0.7)];
   }
 
   .cta-shadow {
-    box-shadow: 0 0 30px -5px rgba(59, 130, 246, 0.5);
+    box-shadow: 0 0 40px -10px rgba(59, 130, 246, 0.6);
   }
 
   .cta-shadow:hover {
-    box-shadow: 0 0 50px -5px rgba(59, 130, 246, 0.8);
+    box-shadow: 0 0 60px -5px rgba(59, 130, 246, 0.9);
   }
 
   .glow-mesh {
     background-image: 
-      radial-gradient(at 0% 0%, hsla(220,100%,15%,1) 0, transparent 50%), 
-      radial-gradient(at 50% 0%, hsla(260,100%,15%,1) 0, transparent 50%), 
-      radial-gradient(at 100% 0%, hsla(330,100%,15%,1) 0, transparent 50%);
+      radial-gradient(at 0% 0%, hsla(210,100%,15%,1) 0, transparent 50%), 
+      radial-gradient(at 50% 0%, hsla(270,100%,15%,1) 0, transparent 50%), 
+      radial-gradient(at 100% 0%, hsla(340,100%,15%,1) 0, transparent 50%);
   }
 }
